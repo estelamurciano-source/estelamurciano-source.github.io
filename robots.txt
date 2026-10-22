@@ -1,0 +1,6 @@
+# Página personal de Estela Murciano
+# Se permite el acceso a todos los buscadores y asistentes de IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://estelamurciano-source.github.io/sitemap.xml

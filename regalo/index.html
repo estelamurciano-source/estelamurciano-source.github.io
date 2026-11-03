@@ -316,6 +316,19 @@ footer a{color:#D9D1E3}
 .link-regalo{font-weight:700;color:var(--morado);text-decoration:none;font-size:15px}
 #uno-clic .btn{width:100%}
 .entrega-top .estrecho{max-width:720px;margin-left:auto;margin-right:auto}
+.puente{margin-top:26px;background:var(--carbon);color:#EEE8F5;border-radius:16px;padding:22px 20px;display:grid;gap:12px}
+.puente .p-tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lila)}
+.puente h3{font-size:22px;line-height:1.2;font-weight:800;color:#fff}
+.puente p{color:#CFC6DA;font-size:15.5px}
+.puente .ventajas{margin:0}
+.puente .ventajas li{color:#CFC6DA}
+.puente .ventajas b{color:#fff}
+.puente .ventajas li::before{background:var(--lila)}
+.puente .btn{width:100%;background:var(--lila);color:var(--carbon)}
+.puente .rgpd{color:#B9AFC6;border-top:0;padding-top:0;margin-top:8px;font-size:13px}
+.puente .hecho h2{color:#fff;font-size:20px}
+.puente .hecho p{color:#CFC6DA}
+.ver-mas{color:var(--lila);font-weight:700;text-decoration:none;font-size:15px}
 </style>
 <div id="entrega" hidden>
   <section class="pedir entrega-top">
@@ -324,8 +337,8 @@ footer a{color:#D9D1E3}
   <section class="programa" id="lista-entrega">
     <div class="wrap">
       <div class="prog-cab">
-        <p class="eyebrow">Cuando acabes tu semana</p>
-        <h2>Una semana es el comienzo. <span>En 12 semanas, conviértete en la persona que siempre soñaste ser.</span></h2>
+        <p class="eyebrow">Todo lo que incluye el programa</p>
+        <h2>En 12 semanas, <span>conviértete en la persona que siempre soñaste ser.</span></h2>
         <p class="lead">Un hábito tarda de media 66 días en volverse automático (Lally y otros, 2010), y ahí es donde la mayoría lo deja. Por eso he creado un programa de 12 semanas con mi sistema completo, para que esta vez llegues hasta el final.</p>
         <div class="resultado oscuro"><p class="r-tit">Tu resultado en 12 semanas</p><p>Dejas de soñar con esa persona y empiezas a vivir como ella, y ves, medido, todo lo que has cambiado. Sin hacerlo a solas: Estela IA cada día y, en el grupo fundador, yo en directo. Es la única vez que lo haré.</p></div>
       </div>
@@ -348,10 +361,10 @@ footer a{color:#D9D1E3}
             <li><b>Llegas con ventaja.</b> Lo que hagas con el regalo es tu punto de partida en el programa.</li>
             <li><b>Pago único, a plazos y en tu moneda.</b> Sin suscripciones ni sorpresas.</li>
           </ul>
-          <div class="bloque-form" id="uno-clic">
-      <button type="button" class="btn" id="btn-lista">Quiero entrar en la lista</button>
-      <p class="rgpd">Uso el nombre y el email que acabas de darme. Gratis y sin compromiso.</p>
-    </div>
+          <div class="bloque-form unirse-caja" id="uno-clic">
+    <button type="button" class="btn btn-unirse">Quiero mi plaza en la lista</button>
+    <p class="rgpd">Uso el nombre y el email que acabas de darme. Gratis y sin compromiso.</p>
+  </div>
         </div>
       </div>
     </div>
@@ -528,7 +541,7 @@ footer a{color:#D9D1E3}
       <div style="margin-top:24px">
         <details><summary>¿De verdad es gratis?</summary><p>Sí. Es un regalo completo, no una prueba. No te pido tarjeta.</p></details>
         <details><summary>¿Qué es Estela IA?</summary><p>Una inteligencia artificial entrenada con mi sistema de Alto Rendimiento Consciente para hablarte como yo. Si se lo preguntas, te dirá que es una IA.</p></details>
-        <details><summary>¿Qué pasa después de las 7 noches?</summary><p>Te quedas con todo: tu carta, tu plan, tu código y el chat, para usarlo siempre que quieras. Si quieres ir más allá, <a href="programa.html">conoce el programa de 12 semanas</a>.</p></details>
+        <details><summary>¿Qué pasa después de las 7 noches?</summary><p>Te quedas con todo: tu carta, tu plan, tu código y el chat, para usarlo siempre que quieras. Si quieres ir más allá, al darte tu regalo te cuento cómo entrar en la lista de espera del programa de 12 semanas.</p></details>
         <details><summary>¿En qué IA funciona?</summary><p>En ChatGPT (donde mejor funciona), Gemini, Claude o Copilot. La versión gratis vale.</p></details>
         <details><summary>¿Es terapia?</summary><p>No. Es para dar tus primeros pasos en tu día a día. Si estás pasando por algo grave, busca a un profesional de la salud.</p></details>
       </div>
@@ -547,7 +560,7 @@ footer a{color:#D9D1E3}
 <footer>
   <div class="wrap">
     <p>Estela IA · Estela Murciano · cliente.murciano@gmail.com</p>
-    <nav><a href="programa.html">Programa de 12 semanas</a><a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a><a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><a href="cookies.html" target="_blank" rel="noopener">Cookies</a><a href="https://www.instagram.com/estela.murciano/" target="_blank" rel="noopener">Instagram</a></nav>
+    <nav><a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a><a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><a href="cookies.html" target="_blank" rel="noopener">Cookies</a><a href="https://www.instagram.com/estela.murciano/" target="_blank" rel="noopener">Instagram</a></nav>
     <p>ChatGPT, Gemini, Claude y Copilot son marcas de sus propietarios. Este regalo no está afiliado a ninguno de ellos.</p>
   </div>
 </footer>
@@ -561,10 +574,32 @@ footer a{color:#D9D1E3}
       <li><div><b>Contesta sus preguntas.</b> Unos 15 minutos. Guarda ese chat: cada noche vuelves a él y escribes «check».</div></li>
     </ol>
     
-    <a class="btn osc" target="_blank" rel="noopener" data-wa>Compártelo con alguien por WhatsApp</a>
+    <div class="puente">
+      <p class="p-tag">Tu siguiente paso</p>
+      <h3>Esto es tu semana 1. ¿Hacemos las 12 juntas?</h3>
+      <p>Un hábito tarda de media 66 días en volverse automático. Por eso estoy preparando un programa de 12 semanas para que esta vez llegues hasta el final, conmigo en directo en el grupo fundador.</p>
+      <ul class="ventajas">
+        <li><b>Empieza el 11 de enero de 2027.</b></li>
+        <li><b>Precio de fundador,</b> el más bajo que tendrá el programa.</li>
+        <li><b>La única vez que estaré contigo en directo.</b></li>
+      </ul>
+      <div class="unirse-caja"><button type="button" class="btn btn-unirse">Quiero mi plaza en la lista</button>
+      <p class="rgpd">Gratis y sin compromiso. Uso el nombre y el email que acabas de darme y te aviso antes que a nadie cuando abra.</p></div>
+      <a class="ver-mas" href="#lista-entrega">Ver todo lo que incluye ↓</a>
+    </div>
   </div>
 </template>
 
+<template id="tpl-form-lista">
+  <form class="form-regalo" data-tipo="lista" novalidate>
+    <label class="campo" for="nombre-3">Tu nombre<input type="text" name="nombre" id="nombre-3" autocomplete="given-name" required maxlength="80"></label>
+    <label class="campo" for="email-3">Tu email<input type="email" name="email" id="email-3" autocomplete="email" inputmode="email" required maxlength="160"></label>
+    <div class="trampa" aria-hidden="true"><input type="text" name="web" id="web-3" tabindex="-1" autocomplete="off"></div>
+    <p class="error" role="alert" hidden></p>
+    <button class="btn" type="submit">Quiero mi plaza en la lista</button>
+    <p class="rgpd">Gratis y sin compromiso. Al enviar, aceptas la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</p>
+  </form>
+</template>
 <template id="tpl-lista-si">
   <div class="hecho" tabindex="-1">
     <h2>Ya estás en la lista, <span class="g-nombre"></span> 💜</h2>
@@ -635,7 +670,7 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
   const TEXTO_LISTA = "Quiero entrar en la lista de espera del programa de 12 semanas.";
   let hecho = false;
   const urlBase = ()=> CONFIG.URL_PUBLICA || location.href.split("#")[0].split("?")[0];
-  const urlPrograma = ()=> urlBase().replace(/[^/]*$/,"") + "programa.html";
+  const urlPrograma = ()=> urlBase() + "#programa";
     const promptFinal = ()=> PROMPT.replace("[ENLACE]", urlPrograma());
 
   function utm(){
@@ -661,33 +696,49 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
     const mal = ()=>{ respaldo.hidden = false; respaldo.value = txt; respaldo.focus(); respaldo.select(); ok.hidden = false; ok.textContent = "Selecciónalo y cópialo desde aquí."; };
     try{ navigator.clipboard.writeText(txt).then(bien, mal); }catch(e){ mal(); }
   }
+  function unirse(nombre, email){
+    const botones = document.querySelectorAll(".btn-unirse");
+    botones.forEach(b=>{ b.disabled = true; b.textContent = "Un segundo…"; });
+    guardar(Object.assign({nombre, email, tipo:"lista", quiere_lista:true, lista_fecha:new Date().toISOString(), texto_lista:TEXTO_LISTA}, utm()))
+      .then(()=>{
+        document.querySelectorAll(".unirse-caja").forEach(c=>{
+          const t2 = document.getElementById("tpl-lista-si").content.cloneNode(true);
+          t2.querySelector(".g-nombre").textContent = nombre;
+          c.replaceChildren(t2);
+        });
+        document.querySelectorAll(".ver-mas").forEach(a=>a.hidden = true);
+        try{ if(window.fbq) fbq("track","CompleteRegistration"); }catch(e){}
+      })
+      .catch(()=>{ botones.forEach(b=>{ b.disabled = false; b.textContent = "No se ha podido. Vuelve a intentarlo"; }); });
+  }
+  function mostrarEntrega(){
+    document.querySelectorAll("#inicio, main, #fija").forEach(el=>el.hidden = true);
+    document.getElementById("entrega").hidden = false;
+    const arriba = ()=>window.scrollTo({top:0,left:0,behavior:"instant"});
+    arriba(); requestAnimationFrame(arriba); setTimeout(arriba,80);
+  }
   function graciasRegalo(nombre, email){
     hecho = true;
-    const txtWa = "Me he apuntado a esto y me ha encantado: un regalo gratis de Estela IA para empezar a ser la persona que quieres ser 💜 " + urlBase();
     const caja = document.getElementById("entrega-regalo");
     const t = document.getElementById("tpl-gracias").content.cloneNode(true);
     t.querySelector(".g-nombre").textContent = nombre;
-    t.querySelector("[data-wa]").href = "https://wa.me/?text=" + encodeURIComponent(txtWa);
     const btn = t.querySelector(".copiar"), ok = t.querySelector(".copiado"), resp = t.querySelector(".respaldo");
     btn.addEventListener("click", ()=>copiar(btn, ok, resp));
     caja.replaceChildren(t);
-    const b2 = document.getElementById("btn-lista");
-    b2.addEventListener("click", async ()=>{
-      b2.disabled = true; b2.textContent = "Un segundo…";
-      try{ await guardar(Object.assign({nombre, email, tipo:"lista", quiere_lista:true, lista_fecha:new Date().toISOString(), texto_lista:TEXTO_LISTA}, utm()));
-        const t2 = document.getElementById("tpl-lista-si").content.cloneNode(true);
-        t2.querySelector(".g-nombre").textContent = nombre;
-        document.getElementById("uno-clic").replaceChildren(t2);
-      }catch(e){ b2.disabled = false; b2.textContent = "No se ha podido. Vuelve a intentarlo"; }
-    });
-    document.querySelectorAll("#inicio, main, #fija").forEach(el=>el.hidden = true);
-    document.getElementById("entrega").hidden = false;
+    document.querySelectorAll(".btn-unirse").forEach(b=>b.addEventListener("click", ()=>unirse(nombre, email)));
+    mostrarEntrega();
     const h = caja.querySelector(".hecho"); if(h) h.focus({preventScroll:true});
-    const arriba = ()=>window.scrollTo({top:0,left:0,behavior:"instant"});
-    arriba(); requestAnimationFrame(arriba); setTimeout(arriba,80);
     try{ if(window.fbq) fbq("track","Lead"); }catch(e){}
   }
-  document.querySelectorAll(".form-regalo").forEach(form=>{
+  function verPrograma(){
+    hecho = true;
+    document.querySelector("#entrega .entrega-top").hidden = true;
+    const c = document.getElementById("uno-clic");
+    c.replaceChildren(document.getElementById("tpl-form-lista").content.cloneNode(true));
+    prepararForm(c.querySelector("form"));
+    mostrarEntrega();
+  }
+  function prepararForm(form){
     const tipo = form.dataset.tipo;
     const nombre = form.querySelector('[name=nombre]'), email = form.querySelector('[name=email]');
     const lista = form.querySelector('[name=lista]'), trampa = form.querySelector('[name=web]');
@@ -720,7 +771,9 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
         boton.disabled = false; boton.textContent = textoBoton;
       }
     });
-  });
+  }
+  document.querySelectorAll(".form-regalo").forEach(prepararForm);
+  if(location.hash === "#programa") verPrograma();
 
   const fija = document.getElementById("fija");
   if(fija && "IntersectionObserver" in window){

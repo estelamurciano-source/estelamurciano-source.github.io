@@ -808,7 +808,7 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
         if(tipo === "lista"){
           const t = document.getElementById("tpl-lista-si").content.cloneNode(true);
           t.querySelector(".g-nombre").textContent = primer;
-          form.closest(".bloque-form").replaceChildren(t);
+          form.closest(".bloque-form").replaceChildren(t); try{ if(window.fbq) fbq("track","CompleteRegistration"); }catch(e){}
         } else graciasRegalo(primer, m);
       }catch(e){
         fallo("No se ha podido enviar. Revisa tu conexión y vuelve a intentarlo.");

@@ -341,6 +341,9 @@ footer a{color:#D9D1E3}
 @font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/inter-latin-800-normal.woff2) format("woff2")}
 .entrega-top .puente .hecho{background:transparent;border:0;border-radius:0;padding:0}
+.en-lista{margin:14px 0 4px;background:var(--lila-suave);border-radius:14px;padding:14px 16px;font-weight:600;line-height:1.45}
+.lista-top{margin:14px 0 4px;background:var(--lila-suave);border:1px solid var(--linea);border-radius:14px;padding:16px;display:grid;gap:12px}
+.lista-top p{font-weight:600;line-height:1.45}
 </style>
 <div id="entrega" hidden>
   <section class="pedir entrega-top">
@@ -462,6 +465,7 @@ footer a{color:#D9D1E3}
           <div class="bloque-form">
             <h2>Recibe tu regalo gratis</h2>
             <p class="que">Te lo doy al momento.</p>
+            <p class="que">Y si quieres seguir después, puedes reservar tu sitio en la lista del grupo fundador.</p>
             <form class="form-regalo" data-tipo="regalo" novalidate>
               <label class="campo" for="nombre-1">Tu nombre<input type="text" name="nombre" id="nombre-1" autocomplete="given-name" required maxlength="80"></label>
               <label class="campo" for="email-1">Tu email<input type="email" name="email" id="email-1" autocomplete="email" inputmode="email" required maxlength="160"></label>
@@ -469,6 +473,7 @@ footer a{color:#D9D1E3}
               
               <p class="error" role="alert" hidden></p>
               <label class="promos"><input type="checkbox" name="promos" value="1"><span>Quiero recibir novedades, anuncios y promociones de Estela por email (opcional).</span></label>
+              <label class="promos"><input type="checkbox" name="lista" value="1"><span>Quiero entrar en la lista de espera del grupo fundador (20 plazas). Gratis y sin compromiso.</span></label>
         <button class="btn" type="submit">Quiero mi regalo</button>
               <p class="rgpd">Al enviar, aceptas la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. Puedes darte de baja cuando quieras.</p>
             </form>
@@ -706,7 +711,7 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
   const TEXTO_PROMOS = "Quiero recibir novedades, anuncios y promociones de Estela por email.";
   let hecho = false;
   const urlBase = ()=> CONFIG.URL_PUBLICA || location.href.split("#")[0].split("?")[0];
-  const urlPrograma = ()=> urlBase() + "#programa";
+  const urlPrograma = ()=> urlBase() + "?utm_source=estela_ia&utm_medium=chat&utm_campaign=regalo&utm_content=noche7#programa";
     const promptFinal = ()=> PROMPT.replace("[ENLACE]", urlPrograma());
 
   function utm(){
@@ -732,17 +737,24 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
     const mal = ()=>{ respaldo.hidden = false; respaldo.value = txt; respaldo.focus(); respaldo.select(); ok.hidden = false; ok.textContent = "Selecciónalo y cópialo desde aquí."; };
     try{ navigator.clipboard.writeText(txt).then(bien, mal); }catch(e){ mal(); }
   }
+  function confirmarLista(nombre){
+    document.querySelectorAll(".unirse-caja").forEach(c=>{
+      const t2 = document.getElementById("tpl-lista-si").content.cloneNode(true);
+      t2.querySelector(".g-nombre").textContent = nombre;
+      c.replaceChildren(t2);
+    });
+    document.querySelectorAll(".lista-top").forEach(c=>{
+      const p = document.createElement("p"); p.className = "en-lista"; p.textContent = "✅ Ya estás en la lista del grupo fundador. Te aviso antes que a nadie 💜";
+      c.replaceWith(p);
+    });
+    document.querySelectorAll(".ver-mas").forEach(a=>a.hidden = true);
+  }
   function unirse(nombre, email){
     const botones = document.querySelectorAll(".btn-unirse");
     botones.forEach(b=>{ b.disabled = true; b.textContent = "Un segundo…"; });
     guardar(Object.assign({nombre, email, tipo:"lista", quiere_lista:true, lista_fecha:new Date().toISOString(), texto_lista:TEXTO_LISTA}, utm()))
       .then(()=>{
-        document.querySelectorAll(".unirse-caja").forEach(c=>{
-          const t2 = document.getElementById("tpl-lista-si").content.cloneNode(true);
-          t2.querySelector(".g-nombre").textContent = nombre;
-          c.replaceChildren(t2);
-        });
-        document.querySelectorAll(".ver-mas").forEach(a=>a.hidden = true);
+        confirmarLista(nombre);
         try{ if(window.fbq) fbq("track","CompleteRegistration"); }catch(e){}
       })
       .catch(()=>{ botones.forEach(b=>{ b.disabled = false; b.textContent = "No se ha podido. Vuelve a intentarlo"; }); });
@@ -761,15 +773,20 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
     const arriba = ()=>window.scrollTo({top:0,left:0,behavior:"instant"});
     arriba(); requestAnimationFrame(arriba); setTimeout(arriba,80);
   }
-  function graciasRegalo(nombre, email){
+  function graciasRegalo(nombre, email, enLista){
     hecho = true;
     const caja = document.getElementById("entrega-regalo");
     const t = document.getElementById("tpl-gracias").content.cloneNode(true);
     t.querySelector(".g-nombre").textContent = nombre;
     const btn = t.querySelector(".copiar"), ok = t.querySelector(".copiado"), resp = t.querySelector(".respaldo");
     btn.addEventListener("click", ()=>copiar(btn, ok, resp));
+    const arriba = document.createElement("div");
+    if(enLista){ arriba.className = "en-lista"; arriba.textContent = "✅ Ya estás en la lista del grupo fundador. Te aviso antes que a nadie 💜"; }
+    else { arriba.className = "lista-top"; arriba.innerHTML = "<p>Antes de irte: ¿quieres tu plaza en el grupo fundador? 20 plazas, precio de fundador y gratis apuntarse.</p><button type=\"button\" class=\"btn btn-unirse\">Sí, quiero mi plaza</button>"; }
+    const h2 = t.querySelector("h2"); h2.parentNode.insertBefore(arriba, h2.nextSibling);
     caja.replaceChildren(t);
     document.querySelectorAll(".btn-unirse").forEach(b=>b.addEventListener("click", ()=>unirse(nombre, email)));
+    if(enLista) confirmarLista(nombre);
     mostrarEntrega();
     const h = caja.querySelector(".hecho"); if(h) h.focus({preventScroll:true});
     try{ if(window.fbq) fbq("track","Lead"); }catch(e){}
@@ -809,7 +826,17 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
           const t = document.getElementById("tpl-lista-si").content.cloneNode(true);
           t.querySelector(".g-nombre").textContent = primer;
           form.closest(".bloque-form").replaceChildren(t); try{ if(window.fbq) fbq("track","CompleteRegistration"); }catch(e){}
-        } else graciasRegalo(primer, m);
+        } else {
+          let enLista = false;
+          if(lista && lista.checked){
+            try{
+              await guardar(Object.assign({ nombre:n, email:m, tipo:"lista", quiere_lista:true, lista_fecha:new Date().toISOString(), texto_lista:TEXTO_LISTA }, utm()));
+              enLista = true;
+              try{ if(window.fbq) fbq("track","CompleteRegistration"); }catch(e){}
+            }catch(e){}
+          }
+          graciasRegalo(primer, m, enLista);
+        }
       }catch(e){
         fallo("No se ha podido enviar. Revisa tu conexión y vuelve a intentarlo.");
         boton.disabled = false; boton.textContent = textoBoton;

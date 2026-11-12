@@ -782,7 +782,7 @@ const PROMPT = "Eres Estela IA: la versión con IA de Estela Murciano. Durante 7
     btn.addEventListener("click", ()=>copiar(btn, ok, resp));
     const arriba = document.createElement("div");
     if(enLista){ arriba.className = "en-lista"; arriba.textContent = "✅ Ya estás en la lista del grupo fundador. Te aviso antes que a nadie 💜"; }
-    else { arriba.className = "lista-top"; arriba.innerHTML = "<p>Antes de irte: ¿quieres tu plaza en el grupo fundador? Solo 20 plazas, precio especial y apuntarse es gratis. Sin compromiso.</p><button type=\"button\" class=\"btn btn-unirse\">Sí, quiero mi plaza</button>"; }
+    else { arriba.className = "lista-top"; arriba.innerHTML = "<p>Antes de irte: ¿quieres tu plaza en el grupo fundador? Solo 20 plazas y precio especial. Apuntarse es gratis y sin compromiso.</p><button type=\"button\" class=\"btn btn-unirse\">Sí, quiero mi plaza</button>"; }
     const h2 = t.querySelector("h2"); h2.parentNode.insertBefore(arriba, h2.nextSibling);
     caja.replaceChildren(t);
     document.querySelectorAll(".btn-unirse").forEach(b=>b.addEventListener("click", ()=>unirse(nombre, email)));
